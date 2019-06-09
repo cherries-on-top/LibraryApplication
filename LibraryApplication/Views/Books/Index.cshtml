@@ -1,0 +1,31 @@
+﻿@model IEnumerable<LibraryApplication.Entities.Book>
+@{
+    ViewBag.Title = "Index";
+
+    
+}
+<h2>BOOKS</h2>
+<p>@Html.ActionLink("New Book", "Create", "Books", null, new { @class = "btn btn-primary" })</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var book in Model)
+    {        
+        <tbody>
+            <tr class="@book.Genre.Name">
+                <td>@Html.ActionLink(book.Name, "Edit", "Books", new { id = book.Id }, null)</td>
+                <td>@book.Author.FullName</td>
+                <td>@book.Genre.Name</td>
+                <td align="right">@Html.ActionLink("Delete", "Delete", "Books", new { id = book.Id }, new { @class = "btn btn-primary" })</td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+

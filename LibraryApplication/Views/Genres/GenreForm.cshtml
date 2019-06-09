@@ -1,0 +1,23 @@
+﻿@model LibraryApplication.Entities.Genre
+
+@{
+    ViewBag.Title = "GenreForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3> ... </h3>
+
+@using (Html.BeginForm("Save", "Genres"))
+{
+    @Html.HiddenFor(g => g.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(g => g.Name)
+        @Html.TextBoxFor(g => g.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(g => g.Name)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+

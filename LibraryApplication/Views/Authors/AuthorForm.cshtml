@@ -1,0 +1,21 @@
+﻿@model LibraryApplication.Entities.Author
+@{
+    ViewBag.Title = "AuthorForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3> ... </h3>
+
+@using (Html.BeginForm("Save", "Authors"))
+{
+    @Html.HiddenFor(a => a.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(a => a.FullName)
+        @Html.TextBoxFor(a => a.FullName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.FullName)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

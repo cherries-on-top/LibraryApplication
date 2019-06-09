@@ -1,0 +1,33 @@
+﻿@model LibraryApplication.ViewModels.BookFormViewModel
+@{
+                /**/
+
+                ViewBag.Title = "BookForm";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3> ... </h3>
+
+@using (Html.BeginForm("Save", "Books"))
+{
+    @Html.HiddenFor(b => b.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(b => b.Name)
+        @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(b => b.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(b => b.AuthorId)
+        @Html.DropDownListFor(b => b.AuthorId, new SelectList(Model.Authors, "Id", "FullName"), "Select Author", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(b => b.GenreId)
+        @Html.DropDownListFor(b => b.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Genre", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
